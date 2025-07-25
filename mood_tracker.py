@@ -31,7 +31,7 @@ def view_moods():
     if not data:
         print("No moods logged yet.")
     else:
-        print("\nYour mood log:")
+        print("\n🗓️ Your mood log:")
         for date, mood in sorted(data.items()):
             print(f"{date}: {mood}")
 
@@ -41,8 +41,10 @@ def get_quote():
         if response.status_code == 200:
             quote_data = response.json()[0]
             print(f"\n💬 Quote of the Day: \"{quote_data['q']}\" — {quote_data['a']}")
+        else:
+            print("Couldn't fetch quote today.")
     except Exception:
-        print("Couldn't fetch quote today.")
+        print("Couldn't connect to quote service.")
 
 if __name__ == "__main__":
     print("📆 Daily Mood Tracker")
@@ -56,3 +58,4 @@ if __name__ == "__main__":
         view_moods()
     else:
         print("Invalid choice.")
+
